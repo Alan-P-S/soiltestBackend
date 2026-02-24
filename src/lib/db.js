@@ -1,7 +1,9 @@
 import {Sequelize} from 'sequelize';
+import dotenv from 'dotenv';
 
-export const sequelize = new Sequelize('bzkd1sqpm1dxwpmqz4jw','uba35zmofo1pfxkc','bcGMzeIOLfNErJYDDd8F',{host:'bzkd1sqpm1dxwpmqz4jw-mysql.services.clever-cloud.com',dialect:'mysql'});
+dotenv.config();
 
+export const sequelize = new Sequelize(process.env.DB,process.env.USER,process.env.PASSWORD,{host:process.env.HOST,dialect:'mysql'});
 
 export const connectDB = async ()=>{
     try{
