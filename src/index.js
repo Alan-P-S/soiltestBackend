@@ -15,7 +15,7 @@ const app = express();
 
 app.use(express.json());
 app.use(cookieParser());
-app.use(cors({origin:'mobilesoiltestinglabtcr.netlify.app',credentials:true}));
+app.use(cors({origin:'https://mobilesoiltestinglabtcr.netlify.app',credentials:true}));
 app.use('/api/auth',authRoute);
 app.use('/api/test',testRoute);
 app.use('/api/plot',plotRoute);
