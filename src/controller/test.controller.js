@@ -2,9 +2,9 @@ import Test from "../models/test.model.js"
 import User from "../models/user.model.js";
 
 export const updateTest = async (req, res) => {
-    const { userId } = req.body;
+    const data = req.body;
     try {
-        await Test.create({ UserId: userId });
+        await Test.create(data);
         return res.status(201).json({ message: "Test Created" });
     } catch (error) {
         return res.status(401).json({ message: "Error", error });
@@ -12,13 +12,11 @@ export const updateTest = async (req, res) => {
 }
 
 export const alltests = async (req, res) => {
-    const { userId } = req.body;
     try {
-        const tests = await User.findByPk(userId, {
-            include: [Test]
-        });
+        const tests = await Test.findAll({ where: { status: "pending" },include:[{model:User}] });
         return res.status(201).json({ data: tests });
     } catch (error) {
+        console.log(error);
         return res.status(401).json({ error: "Error", error });
     }
 }

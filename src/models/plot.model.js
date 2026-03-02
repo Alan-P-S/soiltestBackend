@@ -6,14 +6,6 @@ const Plot = sequelize.define('Plot',{
         type:DataTypes.STRING,
         allowNull:false
     },
-    latitude:{
-        type:DataTypes.STRING,
-        allowNull:false
-    },
-    longitutde:{
-        type:DataTypes.STRING,
-        allowNull:false
-    },
     size:{
         type:DataTypes.STRING,
         allowNull:false

@@ -7,3 +7,4 @@ import Labtech from "./labtech.model.js";
 import Plot from "./plot.model.js";
 import TestResult from "./testResult.model.js";
 import User from "./user.model.js";
+import Report from "./report.model.js";
