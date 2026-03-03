@@ -11,7 +11,8 @@ export const updateTest = async (req, res) => {
     }
 }
 
-export const alltests = async (req, res) => {
+
+export const allprograms = async (req, res) => {
     try {
         const tests = await Test.findAll({ where: { status: "pending" },include:[{model:User}] });
         return res.status(201).json({ data: tests });

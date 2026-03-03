@@ -14,3 +14,7 @@ export const addEvent = async (req,res)=>{
     }
     
 }
+
+export const getAllEvent = async (req,res)=>{
+
+}

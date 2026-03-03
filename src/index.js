@@ -28,7 +28,7 @@ app.use('/api/crop',cropRoute);
 app.use('/api/testresult',testResultRoute);
 app.listen(5000,async ()=>{
     await connectDB();
-    // syncDatabase();
-    // associate();
+     syncDatabase();
+     associate();
     console.log("server is running port 5000")
 })

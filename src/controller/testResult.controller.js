@@ -2,6 +2,7 @@ import { NutrientCalculator } from "../lib/NutrientCalculator.js";
 import TestResult from "../models/testResult.model.js"
 import GeneralCrop from "../models/generalCrop.model.js";
 import { FertilizerCalculator } from "../lib/FertilizerCalculator.js";
+import User from "../models/user.model.js";
 
 export const addTestResult = async (req,res)=>{
     const data = req.body;
@@ -17,6 +18,18 @@ export const addTestResult = async (req,res)=>{
     }
 }
 
+export const getAllTest  = async(req,res)=>{
+    const data = req.body;
+    
+    const phone = data.phone;
+    try{
+        const user = await User.findOne({where:{phone}});
+        const results = await TestResult.findAll({where:{UserId:user.id}});
+        return res.status(200).json(results);
+    }catch(error){
+        return res.status(501).json({error});
+    }
+}
 
 export const TestCalculation = async (req,res)=>{
     const data = req.body

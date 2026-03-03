@@ -145,6 +145,7 @@ export const PhosphorousClassFinder = (value)=>{
     }
 }
 
+
 export const PottassiumClassFinder = (value)=>{
     var cls = null;
     if(value <=35){
@@ -192,3 +193,5 @@ export const PottassiumClassFinder = (value)=>{
         return cls;
     }
 }
+
+
