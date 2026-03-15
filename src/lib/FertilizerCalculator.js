@@ -1,4 +1,5 @@
 
+//{COCONUT:{nitroger:10,phosphorous:60,pottassium:40}} example argument.....
 export const FertilizerCalculator = (cropNvalues)=>{
     const fertilizerRecommend = {};
     Object.entries(cropNvalues).forEach(([key,value])=>{

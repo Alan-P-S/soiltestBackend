@@ -1,9 +1,10 @@
 import express from "express";
-import { generateSoilReportPDF,addReport } from "../controller/report.controller.js";
+import {addReport,getReportByPhone, getRecommendation } from "../controller/report.controller.js";
 
 const router = express.Router();
 
-router.get("/generate/:id/pdf", generateSoilReportPDF);
-router.post("/add", addReport);
 
+router.post("/add", addReport);
+router.post("/reports-by-phone",getReportByPhone);
+router.post("/reports/pdf",getRecommendation);
 export default router;

@@ -1,7 +1,7 @@
 import {Router} from "express";
-import { generalcropAdd } from "../controller/generalcrop.controller.js";
+import { generalcropAdd, getAllCrops } from "../controller/generalcrop.controller.js";
 const router = Router();
 
 router.post("/add",generalcropAdd);
-
+router.get("/all-crops",getAllCrops);
 export default router;

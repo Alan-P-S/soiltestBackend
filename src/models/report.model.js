@@ -6,20 +6,24 @@ const Report = sequelize.define('Report',{
         type:DataTypes.FLOAT,
         allowNull:false,
     },
+    tss:{
+        type:DataTypes.FLOAT,
+        allowNull:false,
+    },
     organicCarbon:{
         type:DataTypes.FLOAT,
         allowNull:false,
     },
-    nitrogen:{
+    phosphorus:{
         type:DataTypes.FLOAT,
         allowNull:false,
     },
-    phosphorous:{
+    potassium:{
         type:DataTypes.FLOAT,
         allowNull:false,
     },
-    pottasium:{
-        type:DataTypes.FLOAT,
+    soilType:{
+        type:DataTypes.STRING,
         allowNull:false,
     },
 })

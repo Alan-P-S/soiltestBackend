@@ -1,6 +1,7 @@
 import User from "../models/user.model.js";
 import Test from "../models/test.model.js";
 import Plot from "../models/plot.model.js";
+import PlotCrops from "../models/PlotCrops.js";
 import FarmerCrop from "../models/farmerCrop.model.js";
 import GeneralCrop from "../models/generalCrop.model.js";
 import BookTest from "../models/bookTest.model.js";
@@ -18,4 +19,8 @@ export const associate = ()=>{
     Test.belongsTo(User);
     Test.belongsTo(Plot,{foreignKey:{allowNull:false}});
     User.hasMany(TestResult);    
+    GeneralCrop.belongsToMany(Plot,{through:PlotCrops});
+    Plot.belongsToMany(GeneralCrop,{through:PlotCrops});
+    Report.belongsTo(Plot);
+    Report.belongsTo(Test);
 }

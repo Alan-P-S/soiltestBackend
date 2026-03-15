@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+
+<style>
+
+body{
+font-family:"Times New Roman";
+font-size:11px;
+margin:15px;
+}
+
+.header{
+text-align:center;
+font-weight:bold;
+line-height:1.2;
+}
+
+.logo{
+position:absolute;
+left:30px;
+top:20px;
+width:60px;
+}
+
+table{
+border-collapse:collapse;
+width:100%;
+margin-top:5px;
+}
+
+td,th{
+border:1px solid black;
+padding:3px;
+font-size:10px;
+text-align:center;
+}
+
+.no-border td{
+border:none;
+}
+
+.vertical{
+writing-mode:vertical-rl;
+transform:rotate(180deg);
+font-size:9px;
+padding:6px 2px;
+}
+
+.section{
+font-weight:bold;
+margin-top:10px;
+}
+
+.footer{
+margin-top:35px;
+display:flex;
+justify-content:space-between;
+}
+
+.stamp{
+border:1px dashed black;
+width:120px;
+height:70px;
+display:flex;
+align-items:center;
+justify-content:center;
+}
+
+.receiver{
+margin-top:35px;
+}
+
+</style>
+</head>
+
+<body>
+
+<img src="kerala_emblem.png" class="logo">
+
+<div class="header">
+
+സംസ്ഥാന കൃഷി വകുപ്പ് കേരള സർക്കാർ<br>
+സമഗ്ര മണ്ണ് പരിശോധനശാല, തൃശ്ശൂർ<br>
+മണ്ണ് പരിശോധന റിപ്പോർട്ട്
+
+</div>
+
+<table>
+
+<tr>
+<td>കർഷകന്റെ പേര്</td>
+<td><%= user.username %></td>
+
+<td>കൃഷി ഗ്രാമം</td>
+<td><%= user.place %></td>
+</tr>
+
+<tr>
+<td>സാമ്പിൾ നമ്പർ</td>
+<td><%= report.sampleNo %></td>
+
+<td>ലാബ് നമ്പർ</td>
+<td><%= report.PlotId %></td>
+</tr>
+
+</table>
+
+
+<!-- SOIL ANALYSIS TABLE -->
+
+<table>
+
+<tr>
+
+<th class="vertical">pH</th>
+<th class="vertical">TSS<th>
+<th class="vertical">OC</th>
+
+<th class="vertical">N Kg/ha</th>
+<th class="vertical">P Kg/ha</th>
+
+<th class="vertical">K ppm</th>
+<th class="vertical">Ca ppm</th>
+<th class="vertical">Mg ppm</th>
+
+<th class="vertical">S ppm</th>
+<th class="vertical">Zn ppm</th>
+<th class="vertical">Cu ppm</th>
+<th class="vertical">Fe ppm</th>
+<th class="vertical">Mn ppm</th>
+<th class="vertical">B ppm</th>
+
+</tr>
+
+<tr>
+
+<td><%= report.ph %></td>
+<td><%= report.tss %></td>
+<td><%= report.organicCarbon %></td>
+<td><%= report.phosphorus %></td>
+
+<td><%= report.potassium %></td>
+<td><%= report.calcium %></td>
+<td><%= report.magnesium %></td>
+
+<td><%= report.sulphur %></td>
+<td><%= report.zinc %></td>
+<td><%= report.copper %></td>
+<td><%= report.iron %></td>
+<td><%= report.manganese %></td>
+<td><%= report.boron %></td>
+
+</tr>
+
+</table>
+
+
+
+<div class="section">
+
+വളപ്രയോഗ ശുപാർശ (Recommended Nutrients)
+
+</div>
+
+<table>
+
+<tr>
+<th>വിള</th>
+<th>നൈട്രജൻ (N)</th>
+<th>ഫോസ്ഫറസ് (P₂O₅)</th>
+<th>പൊട്ടാഷ്യം (K₂O)</th>
+</tr>
+
+<% Object.entries(nutrients).forEach(([crop,val])=>{ %>
+
+<tr>
+<td><%= crop %></td>
+<td><%= val.nitrogen %></td>
+<td><%= val.phosphorus %></td>
+<td><%= val.potassium %></td>
+</tr>
+
+<% }) %>
+
+</table>
+
+
+
+<div class="section">
+
+വള നിർദ്ദേശം (Fertilizer Recommendation)
+
+</div>
+
+<table>
+
+<tr>
+<th>വിള</th>
+<th>യൂറിയ</th>
+<th>സൂപ്പർ ഫോസ്ഫേറ്റ്</th>
+<th>മ്യൂറിയേറ്റ് ഓഫ് പൊട്ടാഷ്</th>
+<th>ജൈവ വളം</th>
+<th>ഡോളോമൈറ്റ്</th>
+</tr>
+
+<% Object.entries(fertilizer).forEach(([crop,val])=>{ %>
+
+<tr>
+<td><%= crop %></td>
+<td><%= val.urea %></td>
+<td><%= val.rockphosphate %></td>
+<td><%= val.pottash %></td>
+<td><%= val.organic %></td>
+<td><%= val.dolomite %></td>
+</tr>
+
+<% }) %>
+
+</table>
+
+
+
+<div class="footer">
+
+<div>
+
+തീയതി : <%= new Date(report.createdAt).toLocaleDateString() %><br><br>
+
+ON I.G.S<br>
+Book Post
+
+</div>
+
+<div>
+
+അസിസ്റ്റന്റ് സോയിൽ കെമിസ്റ്റ്<br><br>
+Signature
+
+</div>
+
+<div class="stamp">
+സ്റ്റാമ്പ്
+</div>
+
+</div>
+
+
+
+<div class="receiver">
+
+സ്വീകർത്താവ്<br><br>
+
+<b><%= user.username %></b><br>
+<%= user.place %>
+
+</div>
+
+</body>
+</html>
